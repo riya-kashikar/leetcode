@@ -1,0 +1,21 @@
+class Solution {
+    public int rob(int[] nums) {
+       Integer dp[]=new Integer[nums.length+10];
+
+       return check(nums,0,dp);
+    }
+    public int check(int[] nums, int idx, Integer dp[]){
+        if(idx>=nums.length){
+            return 0;
+        }
+
+        if(dp[idx]!=null){
+            return dp[idx];
+        }
+        int sp1= nums[idx]+ check(nums, idx+2,dp);
+        int sp2=check(nums,idx+1,dp);
+
+        dp[idx]=Math.max(sp1,sp2);
+        return dp[idx];
+    }
+}
